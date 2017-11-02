@@ -23,4 +23,5 @@
 
 # Development Environment
 .idea
+.envrc
 
