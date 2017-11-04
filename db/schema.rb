@@ -14,9 +14,10 @@ ActiveRecord::Schema.define(version: 20171104135437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pgcrypto"
 
-  create_table "board_items", force: :cascade, comment: "シール貼り付け欄" do |t|
-    t.bigint "board_id", null: false, comment: "質問"
+  create_table "board_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade, comment: "シール貼り付け欄" do |t|
+    t.uuid "board_id", null: false, comment: "質問"
     t.string "title", default: "", null: false, comment: "回答"
     t.integer "position", default: 0, null: false, comment: "表示順"
     t.datetime "created_at", null: false
@@ -24,7 +25,7 @@ ActiveRecord::Schema.define(version: 20171104135437) do
     t.index ["board_id"], name: "index_board_items_on_board_id"
   end
 
-  create_table "boards", force: :cascade, comment: "シール投票用ボード" do |t|
+  create_table "boards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade, comment: "シール投票用ボード" do |t|
     t.string "title", default: "", null: false, comment: "質問"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
