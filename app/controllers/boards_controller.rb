@@ -21,7 +21,7 @@ class BoardsController < ApplicationController
   # GET /boards/new
   def new
     @board = Board.new
-    @board.items.build([{title: ''}, {title: ''}])
+    @board.items.build([{title: '', position: 0}, {title: '', position: 1}])
   end
 
   # POST /boards
@@ -48,6 +48,6 @@ class BoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:title, items_attributes: [:title])
+      params.require(:board).permit(:title, items_attributes: [:title, :position])
     end
 end

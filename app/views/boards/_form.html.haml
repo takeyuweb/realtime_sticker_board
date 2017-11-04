@@ -17,6 +17,7 @@
       = f.fields_for(:items) do |board_item_form|
         .mdc-form-field.mdc-textfield--fullwidth
           .mdc-textfield{data: {mdc: {auto: {init: 'MDCTextfield'}}}, class: board_item_form.object.errors.has_key?(:title) && 'mdc-textfield--invalid'}
+            = board_item_form.hidden_field :position
             = board_item_form.text_field :title, class: 'mdc-textfield__input'
             = board_item_form.label :title, class: 'mdc-textfield__label'
           - board_item_form.object.errors.full_messages_for(:title).each do |error_message|
