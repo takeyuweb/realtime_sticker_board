@@ -1,0 +1,22 @@
+@import "~material-components-web/dist/material-components-web";
+
+// Ensure layout covers the entire screen.
+html {
+  height: 100%;
+}
+
+.realtimestickerboard__title-link:active,
+.realtimestickerboard__title-link:hover,
+.realtimestickerboard__title-link:link,
+.realtimestickerboard__title-link:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.mdc-toolbar__title {
+  padding: 0;
+}
+
+.realtimestickerboard__content__wrapper {
+  padding: 20px 28px;
+}

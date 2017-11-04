@@ -1,0 +1,24 @@
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+
+    .mdc-layout-grid__cell.mdc-layout-grid__cell--span-6
+      %h1.mdc-typography--title New arrivals
+      .mdc-grid-list.mdc-grid-list--tile-aspect-16x9
+        %ul.mdc-grid-list__tiles
+          - @boards.each do |board|
+            %li.mdc-grid-tile
+              .mdc-grid-tile__primary
+                .mdc-grid-tile__primary-content
+                  %a.mdc-typography--title{href: board_path(board)}
+                    = board.title
+
+    .mdc-layout-grid__cell.mdc-layout-grid__cell--span-6
+      %h1.mdc-typography--title Poluar boards
+      .mdc-grid-list.mdc-grid-list--tile-aspect-16x9
+        %ul.mdc-grid-list__tiles
+          - @boards.each do |board|
+            %li.mdc-grid-tile
+              .mdc-grid-tile__primary
+                .mdc-grid-tile__primary-content
+                  %a.mdc-typography--title{href: board_path(board)}
+                    = board.title

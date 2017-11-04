@@ -1,0 +1,12 @@
+= form_for @board do |f|
+
+  %div
+    .mdc-form-field
+      .mdc-textfield{data: {mdc: {auto: {init: 'MDCTextfield'}}}, class: @board.errors.has_key?(:title) && 'mdc-textfield--invalid'}
+        = f.text_field :title, class: 'mdc-textfield__input'
+        = f.label :title, class: 'mdc-textfield__label'
+      - @board.errors.full_messages_for(:title).each do |error_message|
+        %p.mdc-textfield-helptext.mdc-textfield-helptext--persistent.mdc-textfield-helptext--validation-msg
+          = error_message
+
+  = f.submit 'Create', class: 'mdc-button mdc-button--raised mdc-button--primary mdc-ripple-surface', data: {'mdc-auto-init': 'MDCRipple'}

@@ -1,10 +1,22 @@
 !!!
-%html
+%html.mdc-typography
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title RealtimeStickerBoard
+    %meta{charset: 'utf-8'}
+    %meta{name: 'viewport', content: 'width=device-width,initial-scale=1'}
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}
+    %title Realtime Sticker Board
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    = yield
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons'}
+  %body.realtimestickerboard--body.mdc-typography
+    %header.mdc-toolbar.mdc-toolbar--fixed
+      .mdc-toolbar__row
+        %section.mdc-toolbar__section.mdc-toolbar__section--align-start
+          %a.realtimestickerboard__title-link{href: root_url}
+            %h1.mdc-toolbar__title.mdc-toolbar__title--full Realtime Sticker Board
+        %section.mdc-toolbar__section.mdc-toolbar__section--align-end{role: 'toolbar'}
+          %a.material-icons.mdc-toolbar__icon{aria: {label: 'Create new board'}, href: new_board_path} add_box
+    %main.realtimestickerboard__content
+      .mdc-toolbar-fixed-adjust
+        = yield
