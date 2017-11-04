@@ -14,6 +14,6 @@ Board.create([
                  {title: 'あああああああああああああああああああああ'},
                  {title: 'いいいいいいいいいいいいいいいいいいいいい'},
                  {title: 'ううううううううううううううううううううう'},
-             ]).each do |board|
-  board.items.create([{title: 'はい'}, {title: 'いいえ'}])
+             ]).each do |b|
+  b.items.create([{title: 'はい'}, {title: 'いいえ'}])
 end

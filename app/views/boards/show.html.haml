@@ -10,4 +10,6 @@
           .mdc-layout-grid__cell{class: "mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-12-mobile"}
             %h1.mdc-typography--subheading1
               = board_item.title
-            .js-sticker-pasting-column TODO
+            .js-sticker-pasting-column
+              - board_item.stickers.each do |sticker|
+                = [sticker.x, sticker.y].inspect

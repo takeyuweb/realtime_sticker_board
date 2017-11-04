@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :edit]
+  before_action :set_board, only: [:show]
 
   NUMBER_OF_BOARDS = 10
 
@@ -12,6 +12,10 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
+    User.transaction do
+      user = User.create!(ip: request.remote_ip)
+      @board.items[rand(@board.items_count)].stickers.create!(user: user, x: rand(500), y: rand(500))
+    end
   end
 
   # GET /boards/new

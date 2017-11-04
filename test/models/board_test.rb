@@ -2,7 +2,7 @@
 #
 # Table name: boards
 #
-#  id          :integer          not null, primary key
+#  id          :uuid             not null, primary key
 #  title       :string           default(""), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
