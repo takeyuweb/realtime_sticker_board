@@ -3,11 +3,11 @@
   %h1.mdc-typography--title
     = @board.title
 
-    .mdc-layout-grid
+    .mdc-layout-grid.mdc-elevation--z1
       .mdc-layout-grid__inner
 
-        .mdc-layout-grid__cell.mdc-layout-grid__cell--span-6
-          %h1.mdc-typography--subheading1 Answer 1
-
-        .mdc-layout-grid__cell.mdc-layout-grid__cell--span-6
-          %h1.mdc-typography--subheading1 Answer 2
+        - @board.items.each do |board_item|
+          .mdc-layout-grid__cell{class: "mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-12-mobile"}
+            %h1.mdc-typography--subheading1
+              = board_item.title
+            .js-sticker-pasting-column TODO

@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: board_items
+#
+#  id         :integer          not null, primary key
+#  board_id   :integer          not null
+#  title      :string           default(""), not null
+#  position   :integer          default(0), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  board: one
+  title: MyString
+
+two:
+  board: two
+  title: MyString

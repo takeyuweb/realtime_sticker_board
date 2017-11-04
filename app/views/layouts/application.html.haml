@@ -3,12 +3,13 @@
   %head
     %meta{charset: 'utf-8'}
     %meta{name: 'viewport', content: 'width=device-width,initial-scale=1'}
-    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type'}
     %title Realtime Sticker Board
     = csrf_meta_tags
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %link{rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons'}
+    %meta{name: 'turbolinks-cache-control', content: 'no-cache'}
   %body.realtimestickerboard--body.mdc-typography
     %header.mdc-toolbar.mdc-toolbar--fixed
       .mdc-toolbar__row

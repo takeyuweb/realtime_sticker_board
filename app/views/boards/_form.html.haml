@@ -1,12 +1,26 @@
 = form_for @board do |f|
 
-  %div
-    .mdc-form-field
+  %fieldset.form-field-group
+    %legend.mdc-typography--subheading1 シール投票用ボード
+    .mdc-form-field.mdc-textfield--fullwidth
       .mdc-textfield{data: {mdc: {auto: {init: 'MDCTextfield'}}}, class: @board.errors.has_key?(:title) && 'mdc-textfield--invalid'}
         = f.text_field :title, class: 'mdc-textfield__input'
         = f.label :title, class: 'mdc-textfield__label'
       - @board.errors.full_messages_for(:title).each do |error_message|
-        %p.mdc-textfield-helptext.mdc-textfield-helptext--persistent.mdc-textfield-helptext--validation-msg
+        %p.mdc-textfield-helptext.mdc-textfield-helptext--validation-msg
           = error_message
+
+  %fieldset.form-field-group
+    %legend.mdc-typography--subheading1 貼り付け欄
+
+    %div.form-field-group
+      = f.fields_for(:items) do |board_item_form|
+        .mdc-form-field.mdc-textfield--fullwidth
+          .mdc-textfield{data: {mdc: {auto: {init: 'MDCTextfield'}}}, class: board_item_form.object.errors.has_key?(:title) && 'mdc-textfield--invalid'}
+            = board_item_form.text_field :title, class: 'mdc-textfield__input'
+            = board_item_form.label :title, class: 'mdc-textfield__label'
+          - board_item_form.object.errors.full_messages_for(:title).each do |error_message|
+            %p.mdc-textfield-helptext.mdc-textfield-helptext--validation-msg
+              = error_message
 
   = f.submit 'Create', class: 'mdc-button mdc-button--raised mdc-button--primary mdc-ripple-surface', data: {'mdc-auto-init': 'MDCRipple'}

@@ -7,10 +7,13 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+import 'rails-ujs';
+import Turbolinks from 'turbolinks';
 import * as mdc from 'material-components-web';
 import '../styles';
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Hello World from Webpacker');
+Turbolinks.start();
+
+document.addEventListener('turbolinks:load', () => {
   mdc.autoInit();
 });

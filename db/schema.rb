@@ -10,15 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103201929) do
+ActiveRecord::Schema.define(version: 20171104135437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "boards", force: :cascade do |t|
+  create_table "board_items", force: :cascade, comment: "シール貼り付け欄" do |t|
+    t.bigint "board_id", null: false, comment: "質問"
+    t.string "title", default: "", null: false, comment: "回答"
+    t.integer "position", default: 0, null: false, comment: "表示順"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_board_items_on_board_id"
+  end
+
+  create_table "boards", force: :cascade, comment: "シール投票用ボード" do |t|
     t.string "title", default: "", null: false, comment: "質問"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "items_count", default: 0, null: false, comment: "貼り付け欄の数"
   end
 
+  add_foreign_key "board_items", "boards"
 end
