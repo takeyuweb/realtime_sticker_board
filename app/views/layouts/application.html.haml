@@ -1,5 +1,5 @@
 !!!
-%html.mdc-typography
+%html.mdc-typography{class: "#{controller_name}-#{action_name}"}
   %head
     %meta{charset: 'utf-8'}
     %meta{name: 'viewport', content: 'width=device-width,initial-scale=1'}
@@ -10,7 +10,7 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %link{rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons'}
     %meta{name: 'turbolinks-cache-control', content: 'no-cache'}
-  %body.realtimestickerboard--body.mdc-typography
+  %body.realtimestickerboard--body.mdc-typography{data: {controller: controller_name, action: action_name}}
     %header.mdc-toolbar.mdc-toolbar--fixed
       .mdc-toolbar__row
         %section.mdc-toolbar__section.mdc-toolbar__section--align-start

@@ -1,5 +1,4 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show]
 
   NUMBER_OF_BOARDS = 10
 
@@ -13,9 +12,12 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     User.transaction do
+      @board = Board.includes(:items).find(params[:id])
       user = User.create!(ip: request.remote_ip)
       @board.items[rand(@board.items_count)].stickers.create!(user: user, x: rand(500), y: rand(500))
     end
+    @board = Board.includes(items: [:stickers]).find(params[:id])
+    render layout: false
   end
 
   # GET /boards/new
@@ -41,11 +43,6 @@ class BoardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_board
-      @board = Board.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
       params.require(:board).permit(:title, items_attributes: [:title, :position])

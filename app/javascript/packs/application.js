@@ -12,8 +12,20 @@ import Turbolinks from 'turbolinks';
 import * as mdc from 'material-components-web';
 import '../styles';
 
-Turbolinks.start();
+let app = {};
+const modules = require.context("../app/", true, /^\.\/.*\.js$/);
+modules.keys().forEach(key => {
+  let name = key.split('/').pop().split('.').shift()
+  app[name] = modules(key).default
+});
 
 document.addEventListener('turbolinks:load', () => {
   mdc.autoInit();
+
+  const module = app[document.body.dataset.controller]
+  if (module) {
+    module();
+  }
 });
+
+Turbolinks.start();

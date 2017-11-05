@@ -28,3 +28,20 @@ html {
 fieldset.form-field-group {
   border: 0;
 }
+
+html.boards-show,
+html.boards-show body{
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.js-wrap-sticker-pasting-column {
+  height: 100%;
+  width: 100%;
+}
+
+.js-sticker-pasting-column {
+  display: block;
+}
