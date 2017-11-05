@@ -68,6 +68,7 @@ class Board {
     ctx.textAlign = "left";
     ctx.font = "20px 'Roboto','sans-serif'";
     ctx.strokeStyle = 'rgb(0, 0, 0)';
+    ctx.fillStyle = 'rgb(0, 0, 0)';
     ctx.fillText(this.title, 0, 10);
 
     ctx.beginPath();
@@ -99,6 +100,7 @@ class Item {
   render(ctx) {
     ctx.font = "16px 'Roboto','sans-serif'";
     ctx.strokeStyle = 'rgb(0, 0, 0)';
+    ctx.fillStyle = 'rgb(0, 0, 0)';
     ctx.fillText(this.title, this.coordinateX(0), this.coordinateY(10));
 
     ctx.beginPath();

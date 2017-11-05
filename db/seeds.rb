@@ -5,15 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-board = Board.create(title: 'ちょうど良いと思うスマートフォンの大きさは？')
-%w(それ未満 4インチ 5インチ 5.5インチ それ以上).each do |item_title|
-  board.items.create(title: item_title)
+board = Board.new(title: 'ちょうど良いと思うスマートフォンの大きさは？')
+%w(それ未満 4インチ 5インチ 5.5インチ それ以上).each_with_index do |item_title, i|
+  board.items.build(title: item_title, position: i)
 end
+board.save!
 
-Board.create([
-                 {title: 'あああああああああああああああああああああ'},
-                 {title: 'いいいいいいいいいいいいいいいいいいいいい'},
-                 {title: 'ううううううううううううううううううううう'},
-             ]).each do |b|
-  b.items.create([{title: 'はい'}, {title: 'いいえ'}])
+[
+  {title: 'あああああああああああああああああああああ'},
+  {title: 'いいいいいいいいいいいいいいいいいいいいい'},
+  {title: 'ううううううううううううううううううううう'},
+].each do |board_attributes|
+  b = Board.new(board_attributes)
+  b.items.build([{title: 'はい', position: 0}, {title: 'いいえ', position: 1}])
+  b.save!
 end
